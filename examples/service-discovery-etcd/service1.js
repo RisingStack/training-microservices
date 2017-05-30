@@ -24,7 +24,9 @@ app.listen(PORT, () => {
     port: PORT
   }
 
-  // ttl in seconds
+  // WARNING: you don't want to do this in production as it doesn't do load balancing
+  // and doesn't support multiple instances
+  // ttl is in seconds
   etcd.set(SERVICE_KEY, JSON.stringify(service), { ttl: 1 }, (err) => {
     if (err) {
       console.error(err)
