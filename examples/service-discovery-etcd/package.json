@@ -1,0 +1,15 @@
+{
+  "name": "service-discovery-etcd",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Service Discovery with etcd",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "node-etcd": "5.1.0"
+  }
+}
