@@ -1,5 +1,9 @@
 'use strict'
 
+// WARNING: you don't want to do this in production as it doesn't do load balancing and doesn't support multiple instances.
+// In the real world you can use a HAProxy combined with etcd,
+// for every new service registration you can update HAProxy configuration and reach your service through HAProxy with load balancing.
+
 const url = require('url')
 const path = require('path')
 const Etcd = require('node-etcd')
@@ -22,8 +26,6 @@ function getServiceUrlFromEtcdData (data) {
 function getServiceUrlByName (serviceName, callback) {
   const serviceKey = path.join('/', 'services', serviceName)
 
-  // WARNING: you don't want to do this in production as it doesn't do load balancing
-  // and doesn't support multiple instances
   etcd.get(serviceKey, { wait: true }, (err, data) => {
     if (err) {
       return callback(err)
@@ -37,8 +39,6 @@ function getServiceUrlByName (serviceName, callback) {
 function watchServiceUrlByName (serviceName) {
   const serviceKey = path.join('/', 'services', serviceName)
 
-  // WARNING: you don't want to do this in production as it doesn't do load balancing
-  // and doesn't support multiple instances
   etcd.watcher(serviceKey)
     .on('change', (data) => {
       if (data.action === 'set') {

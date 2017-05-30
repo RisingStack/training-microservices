@@ -1,5 +1,12 @@
 # Service Discovery with etcd
 
+## Intro
+
+Demonstration of service registration,
+
+WARNING: you don't want to do this in production as it doesn't do load balancing and doesn't support multiple instances.
+In the real world you can use a HAProxy combined with etcd, for every new service registration you can update HAProxy configuration and reach your service through HAProxy with load balancing.
+
 ## Preparation
 
 **Installing etcd on OSX**

@@ -1,5 +1,9 @@
 'use strict'
 
+// WARNING: you don't want to do this in production as it doesn't do load balancing and doesn't support multiple instances.
+// In the real world you can use a HAProxy combined with etcd,
+// for every new service registration you can update HAProxy configuration and reach your service through HAProxy with load balancing.
+
 const path = require('path')
 const express = require('express')
 const Etcd = require('node-etcd')
@@ -24,9 +28,6 @@ app.listen(PORT, () => {
     port: PORT
   }
 
-  // WARNING: you don't want to do this in production as it doesn't do load balancing
-  // and doesn't support multiple instances
-  // ttl is in seconds
   etcd.set(SERVICE_KEY, JSON.stringify(service), { ttl: 1 }, (err) => {
     if (err) {
       console.error(err)
