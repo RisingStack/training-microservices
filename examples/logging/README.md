@@ -1,3 +1,5 @@
+# Example Logging
+
 ## Goal
 
 Logging in unified format.

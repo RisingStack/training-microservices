@@ -1,3 +1,5 @@
+# Example Prometheus Monitoring
+
 ## Goal
 
 Setup monitoring with [Prometheus](https://prometheus.io) and [Grafana](https://grafana.com/).

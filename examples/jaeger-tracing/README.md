@@ -1,3 +1,5 @@
+# Example Jaeger Tracing
+
 ## Goal
 
 Distributed tracing with [Jaeger](http://jaeger.readthedocs.io) and [OpenTracing](http://opentracing.io/).
