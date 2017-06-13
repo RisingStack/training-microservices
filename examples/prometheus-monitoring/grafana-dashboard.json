@@ -334,7 +334,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -364,5 +364,5 @@
   },
   "timezone": "browser",
   "title": "Prometheus",
-  "version": 6
+  "version": 7
 }
