@@ -1,16 +1,14 @@
 {
   "name": "prometheus-monitoring",
   "version": "1.0.0",
-  "description": "",
+  "description": "Setup monitoring with Prometheus and Grafana",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "RisingStack, Inc.",
   "dependencies": {
     "express": "4.15.3",
-    "microtime": "2.1.5",
     "prom-client": "9.1.0"
   }
 }
