@@ -1,0 +1,19 @@
+{
+  "name": "logging",
+  "version": "1.0.0",
+  "description": "Logging",
+  "main": "server",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "request": "2.81.0",
+    "request-promise-native": "1.0.4",
+    "uuid": "3.0.1",
+    "winston": "2.3.1",
+    "winston-gke": "1.0.2"
+  }
+}

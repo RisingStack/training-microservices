@@ -23,6 +23,7 @@ app.get('/site/:site', (req, res, next) => {
   span.setTag(opentracing.Tags.HTTP_URL, `${req.protocol}://${req.hostname}${req.originalUrl}`)
   span.setTag(opentracing.Tags.HTTP_METHOD, req.method)
   span.setTag('request_path', req.route.path)
+  span.setTag('request_id', req.headers['x-request-id'])
 
   res.json({
     name: req.params.site,
