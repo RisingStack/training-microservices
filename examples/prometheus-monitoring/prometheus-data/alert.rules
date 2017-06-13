@@ -1,0 +1,8 @@
+# APIHighResponseTime
+ALERT APIHighResponseTime
+  IF avg(rate(http_request_duration_ms_sum[1m]) / rate(http_request_duration_ms_count[1m])) by (service, route) > 100
+  FOR 60s
+  ANNOTATIONS {
+    summary = "High request latency on {{ $labels.service }} and {{ $labels.route }}",
+    description = "{{ $labels.service }}, {{ $labels.route }} has a response time above 100ms (current value: {{ $value }}ms)",
+  }
