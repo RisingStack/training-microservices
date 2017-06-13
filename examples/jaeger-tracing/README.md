@@ -26,4 +26,4 @@ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p1668
 
 ## Result
 
-![Jaeger Tracing](/examples/jager-tracing/jager-tracing.png)
+![Jaeger Tracing](/examples/jaeger-tracing/jaeger-tracing.png)
