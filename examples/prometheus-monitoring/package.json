@@ -1,5 +1,6 @@
 {
-  "name": "prometheus-monitoring",
+  "name": "example-prometheus-monitoring",
+  "private": true,
   "version": "1.0.0",
   "description": "Setup monitoring with Prometheus and Grafana",
   "main": "index.js",

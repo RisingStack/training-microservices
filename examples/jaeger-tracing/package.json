@@ -1,5 +1,6 @@
 {
-  "name": "jaeger-tracing",
+  "name": "example-jaeger-tracing",
+  "private": true,
   "version": "1.0.0",
   "description": "Distributed tracing with Jaeger and OpenTracing.",
   "scripts": {

@@ -1,0 +1,17 @@
+{
+  "name": "example-ratelimiter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Rate limiting API.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "ratelimiter": "3.0.3",
+    "redis": "2.7.1"
+  }
+}
