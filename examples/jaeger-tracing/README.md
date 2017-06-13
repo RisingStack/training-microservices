@@ -9,6 +9,7 @@ Distributed tracing with [Jaeger](http://jaeger.readthedocs.io) and [OpenTracing
 3. `npm start`
 4. open: http://localhost:3001/site
 5. Visit your running Jaeger: http://localhost:16686
+6. Check out context and instrumentations: https://github.com/RisingStack/jaeger-node
 
 ## Requirements
 
