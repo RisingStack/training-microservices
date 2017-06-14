@@ -1,0 +1,21 @@
+{
+  "name": "example-retry",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel server app",
+    "server": "node server",
+    "app": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "npm-run-all": "4.0.2",
+    "promise-retry": "1.1.1",
+    "request": "2.81.0",
+    "request-promise-native": "1.0.4"
+  }
+}
