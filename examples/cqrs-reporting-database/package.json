@@ -1,0 +1,16 @@
+{
+  "name": "example-cqrs-reporting-database",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CQRS: Reporting Database Example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "lodash": "4.17.4",
+    "tortoise": "1.0.1"
+  }
+}
