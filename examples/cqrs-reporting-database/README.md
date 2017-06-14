@@ -42,3 +42,5 @@ Running...
 User in user service database { id: 'aaa', name: 'John Smith', state: 'churn' }
 User in Reporting Database { name: 'John Smith' }
 ```
+
+![Reporting Database](/examples/cqrs-reporting-database/reporting-database.png)
