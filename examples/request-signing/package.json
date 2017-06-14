@@ -1,0 +1,20 @@
+{
+  "name": "example-request-signing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Request signing example",
+  "scripts": {
+    "start": "npm-run-all --parallel server1 server2",
+    "server1": "node server1",
+    "server2": "node server2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "http-signature": "1.1.1",
+    "npm-run-all": "4.0.2",
+    "request": "2.81.0",
+    "request-promise-native": "1.0.4"
+  }
+}
