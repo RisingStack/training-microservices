@@ -3,8 +3,8 @@
 const express = require('express')
 const Limiter = require('ratelimiter')
 const redis = require('redis')
-const redisClient = redis.createClient()
 
+const redisClient = redis.createClient()
 const app = express()
 const port = process.env.PORT || 3001
 const ratelimiterMax = Number(process.env.RATE_LIMITER_MAX) || 5                    // 5 requests

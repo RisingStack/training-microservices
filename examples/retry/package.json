@@ -2,8 +2,8 @@
   "name": "example-retry",
   "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Retry logic example",
+  "main": "app.js",
   "scripts": {
     "start": "npm-run-all --parallel server app",
     "server": "node server",

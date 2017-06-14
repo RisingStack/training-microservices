@@ -1,0 +1,16 @@
+{
+  "name": "example-healthz",
+  "private": true,
+  "version": "1.0.0",
+  "description": "/heathz endpoint example",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "ioredis": "3.1.1"
+  }
+}
