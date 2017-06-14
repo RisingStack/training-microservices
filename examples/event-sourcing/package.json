@@ -1,0 +1,16 @@
+{
+  "name": "example-event-sourcing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Event Sourcing Example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "lint": "eslint account accountLog app"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "lodash": "4.17.4"
+  }
+}
