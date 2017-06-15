@@ -1,8 +1,8 @@
-# Example GRPC
+# Example gRPC
 
 ## Goal
 
-Demonstrate protocol buffer concept through GRPC.
+Demonstrate protocol buffer concept through gRPC.
 
 ## Steps
 

@@ -1,0 +1,15 @@
+{
+  "name": "api-versioning",
+  "version": "1.0.0",
+  "description": "Example for API Versioning",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "express-routes-versioning": "1.0.0"
+  }
+}
