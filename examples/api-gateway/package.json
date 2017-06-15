@@ -1,0 +1,22 @@
+{
+  "name": "example-api-gateway",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Provide an example for various API Gateway approaches.",
+  "scripts": {
+    "start": "npm-run-all --parallel gateway service1 service2",
+    "gateway": "node gateway",
+    "service1": "node service1",
+    "service2": "node service2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "express-http-proxy": "1.0.3",
+    "npm-run-all": "4.0.2",
+    "request": "2.81.0",
+    "request-promise-native": "1.0.4",
+    "xml": "1.0.1"
+  }
+}
