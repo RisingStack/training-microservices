@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package sites;
+
+service SiteService {
+  rpc List (Empty) returns (SiteList) {}
+  rpc Insert (Site) returns (Site) {}
+}
+
+message Empty {}
+
+message Site {
+  int32 id = 1;
+  string title = 2;
+  string url = 3;
+}
+
+message SiteList {
+  repeated Site sites = 1;
+}
