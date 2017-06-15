@@ -7,15 +7,16 @@ const port = process.env.PORT || 3001
 let counter = 0
 
 
-app.get('/', (req, res, next) => {
-  counter++
+app.get('/', (req, res) => {
+  counter += 1
 
   // Fail for every second call
   if (counter % 2 === 0 || counter % 3 === 0 || counter % 4 === 0) {
     res.statusCode = 500
-    return res.json({
+    res.json({
       status: 'error'
     })
+    return
   }
 
   res.json({

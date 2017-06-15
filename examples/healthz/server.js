@@ -8,7 +8,7 @@ const app = express()
 const port = process.env.PORT || 3001
 const HEALTH_TIMEOUT = 1000
 
-app.get('/healthz', (req, res, next) => {
+app.get('/healthz', (req, res) => {
   Promise.all([
     promiseTimeout(redis.get('dummy_key'), HEALTH_TIMEOUT)
   ])

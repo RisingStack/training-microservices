@@ -41,7 +41,7 @@ function getWithRetry (uri, logContext) {
 let counter = 0
 
 function call () {
-  counter++
+  counter += 1
   console.log(`${counter}. Request started`)
 
   getWithRetry('http://localhost:3001', { counter })

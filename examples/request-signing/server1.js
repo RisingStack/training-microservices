@@ -18,7 +18,7 @@ app.get('/', (req, res, next) => {
     uri: 'http://localhost:3002',
     json: true,
     httpSignature: {
-      keyId: keyId,
+      keyId,
       key: privateKeys[keyId]
     }
   })

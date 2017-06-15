@@ -21,23 +21,23 @@ app.use((req, res, next) => {
   })
 
   limiter.get((err, limit) => {
-   if (err) {
-     return next(err)
-   }
+    if (err) {
+      return next(err)
+    }
 
-   res.set('RateLimit-Limit', limit.total)
-   res.set('RateLimit-Remaining', limit.remaining - 1)
-   res.set('RateLimit-Reset', limit.reset)
+    res.set('RateLimit-Limit', limit.total)
+    res.set('RateLimit-Remaining', limit.remaining - 1)
+    res.set('RateLimit-Reset', limit.reset)
 
-   if (limit.remaining) {
-     return next()
-   }
+    if (limit.remaining) {
+      return next()
+    }
 
-   const after = Math.floor(limit.reset - (Date.now() / 1000))
-   res.set('Retry-After', after)
-   res.sendStatus(429)
+    const after = Math.floor(limit.reset - (Date.now() / 1000))
+    res.set('Retry-After', after)
+    res.sendStatus(429)
 
-   return next()
+    return next()
   })
 })
 

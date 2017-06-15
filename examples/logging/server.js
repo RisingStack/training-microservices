@@ -2,6 +2,7 @@
 
 const express = require('express')
 const request = require('request-promise-native')
+const uuidV1 = require('uuid/v1')
 const winston = require('winston')
 const gke = require('winston-gke')  // google cloud fluentd logging format
 
@@ -9,7 +10,6 @@ const app = express()
 const port = process.env.PORT || 3001
 const logLevel = process.env.LOG_LEVEL || 'info'
 const logger = gke(new winston.Logger(), logLevel)
-const uuidV1 = require('uuid/v1')
 
 function getLogMetaFromReq (req, res) {
   return {

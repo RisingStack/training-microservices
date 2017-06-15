@@ -14,46 +14,45 @@ const app = express()
 const port = process.env.PORT || 3001
 
 function requestWithCache (url, method = 'GET') {
-  function sendRequest (url) {
-    return request({
+  async function sendRequest (url) {
+    const response = await request({
       url,
       method,
       headers: { 'User-Agent': 'Awesome-Octocat-App' },
       resolveWithFullResponse: true,
       json: true
     })
-      .then((response) => {
-        const body = response.body
-        const cacheControlHeader = response.headers['cache-control']
 
-        let cacheOptions = {}
+    const body = response.body
+    const cacheControlHeader = response.headers['cache-control']
 
-        if (method === 'GET' && cacheControlHeader) {
-          const parsedCacheControl = parseCacheControl(cacheControlHeader) || {}
-          const maxAge = Number(parsedCacheControl['max-age'])
-          const staleIfError = Number(parsedCacheControl['stale-if-error'])
+    let cacheOptions = {}
 
-          // overried the default ttl options
-          if (_.isNumber(maxAge) || _.isNumber(staleIfError)) {
-            const stale = !_.isNaN(maxAge) ? maxAge * 1000 : undefined
-            const expire = !_.isNaN(staleIfError) ? staleIfError * 1000 : stale
+    if (method === 'GET' && cacheControlHeader) {
+      const parsedCacheControl = parseCacheControl(cacheControlHeader) || {}
+      const maxAge = Number(parsedCacheControl['max-age'])
+      const staleIfError = Number(parsedCacheControl['stale-if-error'])
 
-            // now < stale < expire
-            cacheOptions = {
-              // until the max age time the value is up to date
-              stale,
-              // try to refresh the value when it's stale but not yet expired
-              // on error we can still use the stored value
-              expire
-            }
-          }
+      // overried the default ttl options
+      if (_.isNumber(maxAge) || _.isNumber(staleIfError)) {
+        const stale = !_.isNaN(maxAge) ? maxAge * 1000 : undefined
+        const expire = !_.isNaN(staleIfError) ? staleIfError * 1000 : stale
+
+        // now < stale < expire
+        cacheOptions = {
+          // until the max age time the value is up to date
+          stale,
+          // try to refresh the value when it's stale but not yet expired
+          // on error we can still use the stored value
+          expire
         }
+      }
+    }
 
-        return {
-          cacheOptions,
-          value: body
-        }
-      })
+    return {
+      cacheOptions,
+      value: body
+    }
   }
 
   const cacheKey = url

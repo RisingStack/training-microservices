@@ -13,7 +13,7 @@ function valueableResource (isFail) {
 
 function protectedValueableResource (isFail) {
   return new Promise((resolve, reject) => {
-    breaker.run((success, failed) =>  {
+    breaker.run((success, failed) => {
       valueableResource(isFail)
         .then((result) => {
           success()
@@ -34,11 +34,11 @@ app.get('/', (req, res, next) => {
 
   protectedValueableResource(isFail)
     .then((result) => {
-      res.send({ result  })
+      res.send({ result })
       next()
     })
     .catch((err) => {
-      res.send({ err: err.message  })
+      res.send({ err: err.message })
     })
 })
 
