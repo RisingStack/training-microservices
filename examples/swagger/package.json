@@ -1,0 +1,18 @@
+{
+  "name": "example-swagger",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Swagger example",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "express": "4.15.3",
+    "lodash": "4.17.4",
+    "swagger-express-mw": "0.7.0",
+    "swagger-ui-dist": "3.0.14"
+  }
+}
