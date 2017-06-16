@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "4.15.3",
     "lodash": "4.17.4",
+    "swagger-client-sync": "1.0.3",
     "swagger-express-mw": "0.7.0",
     "swagger-ui-dist": "3.0.14"
   }

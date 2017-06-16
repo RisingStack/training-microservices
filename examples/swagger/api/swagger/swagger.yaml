@@ -7,6 +7,9 @@ info:
 host: localhost:3001
 # basePath prefixes all resource paths
 basePath: /
+tags:
+  - name: site
+    description: Site API
 #
 schemes:
   # tip: remove http to make production-grade
@@ -23,6 +26,8 @@ paths:
     x-swagger-router-controller: siteController
     get:
       operationId: get
+      tags:
+        - site
       description: Return a sites list
       responses:
         "200":
@@ -38,6 +43,8 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     post:
       operationId: create
+      tags:
+        - site
       description: Add a new site
       parameters:
       - name: site
@@ -60,6 +67,8 @@ paths:
     x-swagger-router-controller: siteController
     get:
       operationId: findById
+      tags:
+        - site
       description: Return Site by id
       parameters:
       - name: id
@@ -78,6 +87,8 @@ paths:
 
     put:
       operationId: updateById
+      tags:
+        - site
       description: Update a site
       parameters:
       - name: id
@@ -103,6 +114,8 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     delete:
       operationId: removeById
+      tags:
+        - site
       description: Delete a site by ID
       parameters:
       - name: id
