@@ -22,7 +22,8 @@ app.use((req, res, next) => {
 
   limiter.get((err, limit) => {
     if (err) {
-      return next(err)
+      console.error(err)
+      return next()
     }
 
     res.set('RateLimit-Limit', limit.total)
@@ -41,7 +42,7 @@ app.use((req, res, next) => {
   })
 })
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
   res.send('ok')
 })
 

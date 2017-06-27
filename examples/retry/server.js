@@ -4,20 +4,26 @@ const express = require('express')
 
 const app = express()
 const port = process.env.PORT || 3001
-let counter = 0
+let errorCounter = 0
 
 
 app.get('/', (req, res) => {
-  counter += 1
+  const idempotencyKey = req.headers['x-idempotency']
+  const counter = req.query.counter
+
+  errorCounter += 1
 
   // Fail for every second call
-  if (counter % 2 === 0 || counter % 3 === 0 || counter % 4 === 0) {
+  if (errorCounter % 2 === 0 || errorCounter % 3 === 0 || errorCounter % 4 === 0) {
     res.statusCode = 500
     res.json({
       status: 'error'
     })
+    console.log(`Server. ${counter} response with: error, idempotencyKey: ${idempotencyKey}`)
     return
   }
+
+  console.log(`Server. ${counter} response with: success, idempotencyKey: ${idempotencyKey}`)
 
   res.json({
     status: 'ok'

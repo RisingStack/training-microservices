@@ -1,6 +1,5 @@
 'use strict'
 
-const request = require('request')
 const express = require('express')
 const opentracing = require('opentracing')
 const jaeger = require('jaeger-client')
@@ -15,7 +14,7 @@ const reporter = new jaeger.RemoteReporter(udpSender)
 const sampler = new jaeger.RateLimitingSampler(1)
 const tracer = new jaeger.Tracer('service 2', reporter, sampler)
 
-app.get('/site/:site', (req, res, next) => {
+app.get('/site/:site', (req, res) => {
   const spanContext = jaeger.SpanContext.fromString(req.headers['trace-span-context'])
   const span = tracer.startSpan('http_server', {
     childOf: spanContext
