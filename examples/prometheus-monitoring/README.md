@@ -21,9 +21,7 @@ Setup monitoring with [Prometheus](https://prometheus.io) and [Grafana](https://
 
 ### Run
 
-Modify: `/prometheus-data/prometheus.yml`, replace `192.168.0.10` with your own host machine's IP.
-Host machine IP address: `ifconfig | grep 'inet 192'| awk '{ print $2}'`
-
+Unix:
 ```sh
 docker run -p 9090:9090 -v $(pwd)/prometheus-data:/prometheus-data prom/prometheus -config.file=/prometheus-data/prometheus.yml
 ```
