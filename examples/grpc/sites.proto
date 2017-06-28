@@ -3,8 +3,8 @@ syntax = "proto3";
 package sites;
 
 service SiteService {
-  rpc List (Empty) returns (SiteList) {}
-  rpc Insert (Site) returns (Site) {}
+  rpc List (Empty) returns (SiteList);
+  rpc Insert (Site) returns (Site);
 }
 
 message Empty {}
