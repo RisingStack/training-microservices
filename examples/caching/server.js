@@ -18,6 +18,7 @@ function requestWithCache (url, method = 'GET') {
     const response = await request({
       url,
       method,
+      // github api requires the User-Agent to be set
       headers: { 'User-Agent': 'Awesome-Octocat-App' },
       resolveWithFullResponse: true,
       json: true

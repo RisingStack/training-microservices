@@ -27,7 +27,7 @@ app.get('/', async (req, res) => {
     request({ uri: service2Url, json: true })
   ])
 
-  const serviceNames = services.map((service) => service.name)
+  const serviceNames = services.map((service) => ({ serviceName: service.name }))
   const response = { serviceNames }
 
   if (req.get('Content-Type') === 'application/xml') {

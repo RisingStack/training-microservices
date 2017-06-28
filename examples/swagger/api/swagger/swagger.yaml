@@ -23,8 +23,10 @@ produces:
   - application/json
 paths:
   /sites:
+    # in which file to look for the controller
     x-swagger-router-controller: siteController
     get:
+      # which exposed method should be used as handler
       operationId: get
       tags:
         - site
@@ -47,6 +49,7 @@ paths:
         - site
       description: Add a new site
       parameters:
+      # parameters are validated by swagger
       - name: site
         description: Site properties
         in: body

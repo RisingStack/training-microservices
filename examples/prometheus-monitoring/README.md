@@ -25,10 +25,19 @@ Modify: `/prometheus-data/prometheus.yml`, replace `192.168.0.10` with your own 
 Host machine IP address: `ifconfig | grep 'inet 192'| awk '{ print $2}'`
 
 ```sh
-docker run -p 9090:9090 -v /YOUR_PATH/training-microservices/examples/prometheus-monitoring/prometheus-data:/prometheus-data prom/prometheus -config.file=/prometheus-data/prometheus.yml
+docker run -p 9090:9090 -v $(pwd)/prometheus-data:/prometheus-data prom/prometheus -config.file=/prometheus-data/prometheus.yml
 ```
 
-[Open Prometheus: http://http://localhost:9090](http://http://localhost:9090/graph)
+Host machine IP address: `ifconfig | grep 'inet 192'| awk '{ print $2}'`
+Modify: `/prometheus-data/prometheus.yml`, replace `192.168.0.10` with your own host machine's IP.
+
+Necessary when you modified prometheus-data.
+
+```sh
+curl -X POST http://localhost:9090/-/reload
+```
+
+[Open Prometheus: http://localhost:9090](http://localhost:9090/graph)
 
 ### Queries
 
@@ -52,7 +61,7 @@ curl -X POST http://localhost:9090/-/reload
 docker run -i -p 3000:3000 grafana/grafana
 ```
 
-[Open Grafana: http://http://localhost:3000](http://http://localhost:3000)
+[Open Grafana: http://localhost:3000](http://localhost:3000)
 
 ```
 Username: admin

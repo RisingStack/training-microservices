@@ -30,6 +30,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res, next) => {
   const requestOpts = {
+    // github api requires the User-Agent to be set
     headers: { 'User-Agent': 'Awesome-Octocat-App' },
     json: true
   }

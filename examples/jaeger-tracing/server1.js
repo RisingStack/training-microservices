@@ -15,7 +15,7 @@ const reporter = new jaeger.RemoteReporter(udpSender)
 const sampler = new jaeger.RateLimitingSampler(1)
 const tracer = new jaeger.Tracer('service 1', reporter, sampler)
 
-app.get('/site', (req, res) => {
+app.get('/', (req, res) => {
   const span = tracer.startSpan('http_server')
 
   span.setTag(opentracing.Tags.HTTP_URL, `${req.protocol}://${req.hostname}${req.originalUrl}`)
