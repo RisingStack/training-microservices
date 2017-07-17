@@ -13,6 +13,8 @@ const publicKeys = {
 app.use((req, res, next) => {
   let isValidSignature
 
+  console.log(req.headers)
+
   // Validate signature
   try {
     const parsed = httpSignature.parseRequest(req)
