@@ -8,28 +8,30 @@ const xml = require('xml')
 const app = express()
 const port = process.env.PORT || 3001
 
+// Dummmy service discovery
 const service1Url = 'http://localhost:3002'
 const service2Url = 'http://localhost:3003'
 
 const service1Proxy = httpProxy(service1Url)
 const service2Proxy = httpProxy(service2Url)
 
+// Shared general logic: Authentication
 app.use((req, res, next) => {
   // TODO: my authentication logic
   console.log(`Authentication: ${req.path}`)
   next()
 })
 
-// Merge services
+// Aggregate services after authentication
 app.get('/', async (req, res) => {
   const services = await Promise.all([
     request({ uri: service1Url, json: true }),
     request({ uri: service2Url, json: true })
   ])
 
-  const serviceNames = services.map((service) => ({ serviceName: service.name }))
-  const response = { serviceNames }
+  const response = { services }
 
+  // Serialization format transformation: XML or JSON
   if (req.get('Content-Type') === 'application/xml') {
     const xmlResponse = xml(response)
     res.set('content-type', 'text/xml')
@@ -39,7 +41,7 @@ app.get('/', async (req, res) => {
   }
 })
 
-// Proxy request
+// Proxy request after authentication
 app.get('/service1', (req, res, next) => {
   service1Proxy(req, res, next)
 })
