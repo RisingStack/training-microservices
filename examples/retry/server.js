@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
 
   errorCounter += 1
 
-  // Fail for every second call
-  if (errorCounter % 2 === 0 || errorCounter % 3 === 0 || errorCounter % 4 === 0) {
+  // Fail for every second and third call
+  if (errorCounter % 2 === 0 || errorCounter % 3 === 0) {
     res.statusCode = 500
     res.json({
       status: 'error'
