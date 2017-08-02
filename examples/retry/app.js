@@ -4,8 +4,7 @@ const request = require('request-promise-native')
 const promiseRetry = require('promise-retry')
 const uuidv1 = require('uuid/v1')
 
-function getWithRetry (uri, logContext) {
-  const idempotencyKey = uuidv1()
+function getWithRetry (uri, logContext, idempotencyKey = uuidv1()) {
   let started
   let lastRetry
 
@@ -47,15 +46,17 @@ function getWithRetry (uri, logContext) {
 // Call getWithRetry
 let counter = 0
 
-function call () {
+function call (idempotencyKey) {
   counter += 1
   console.log(`Client ${counter}. Request started`)
 
-  getWithRetry(`http://localhost:3001?counter=${counter}`, { counter })
+  return getWithRetry(`http://localhost:3001?counter=${counter}`, { counter }, idempotencyKey)
     .then((body) => console.log(`Client ${counter}. Request finished with: success`, body))
     .catch((err) => console.log(`Client ${counter}. Request finished with: failed`, err.message))
 }
 
 // Start
-call()
-setTimeout(() => call(), 2000)
+const key = uuidv1()
+call() // retry
+  .then(() => call(key)) // idempotency
+  .then(() => call(key)) // idempotency
