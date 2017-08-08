@@ -23,7 +23,7 @@ log('Accounts are opened', Account.get())
 Account.transferMoney('Samantha', 'John', 500)
 Account.transferMoney('Samantha', 'Suzzy', 500)
 
-log('Some money are transfered', Account.get())
+log('Some money is transfered', Account.get())
 
 // Close some accounts
 Account.close('Samantha')

@@ -13,7 +13,8 @@ function getWithRetry (uri, logContext, idempotencyKey = uuidv1()) {
       started = Date.now()
     }
 
-    console.log(`Client ${logContext.counter}. Making request, after ${Date.now() - started}ms, Runs for ${number}. time.`)
+    console.log(
+      `Client ${logContext.counter}. Making request, after ${Date.now() - started}ms, Runs for ${number}. time.`)
 
     if (lastRetry) {
       console.log(`Client ${logContext.counter}. Retried after ${Date.now() - lastRetry}ms`)

@@ -15,7 +15,7 @@ Event Sourcing example
 ```
 --- Create events ---
 Accounts are opened { Samantha: 1000, John: 500, Suzzy: 0 }
-Some money are transfered { Samantha: 0, John: 1000, Suzzy: 500 }
+Some money is transfered { Samantha: 0, John: 1000, Suzzy: 500 }
 Samantha closed her account { John: 1000, Suzzy: 500 }
 --- Process events ---
 Rebuild accounts from event log { John: 1000, Suzzy: 500 }
