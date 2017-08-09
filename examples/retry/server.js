@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
   const counter = req.query.counter
 
   if (idempotencyStore.get(idempotencyKey)) {
-    console.log(`Server ${counter}. request already served, respond with: success, idempotencyKey: ${idempotencyKey}`)
+    // eslint-disable-next-line max-len
+    console.log(`Server ${counter}. Idempotency key found, request already served, respond with: success, idempotencyKey: ${idempotencyKey}`)
     return res.json({
       status: 'ok'
     })
@@ -28,11 +29,11 @@ app.get('/', (req, res) => {
     res.json({
       status: 'error'
     })
-    console.log(`Server ${counter}. respond with: error, idempotencyKey: ${idempotencyKey}`)
+    console.log(`Server ${counter}. Idempotency key not found respond with: error, idempotencyKey: ${idempotencyKey}`)
     return
   }
 
-  console.log(`Server ${counter}. respond with: success, idempotencyKey: ${idempotencyKey}`)
+  console.log(`Server ${counter}. Idempotency key not found respond with: success, idempotencyKey: ${idempotencyKey}`)
 
   idempotencyStore.set(idempotencyKey, true)
   res.json({
