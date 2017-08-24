@@ -32,6 +32,7 @@ guest / guest
 
 ```
 Create user:  { name: 'John Doe', state: 'default' }
+Create account: { id: 'aaa', balance: 200 }
 Update user's state:  { state: 'churn' }
 Rename user:  { name: 'John Smith' }
 ```
@@ -40,6 +41,7 @@ Rename user:  { name: 'John Smith' }
 ```
 Running...
 User in user service database { id: 'aaa', name: 'John Smith', state: 'churn' }
+Account in account service database { id: 'aaa', balance: 200 }
 User in Reporting Database { name: 'John Smith' }
 ```
 
