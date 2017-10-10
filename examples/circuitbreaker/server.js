@@ -5,7 +5,14 @@ const CircuitBreaker = require('circuit-breaker-js')
 
 const app = express()
 const port = process.env.PORT || 3001
-const breaker = new CircuitBreaker()
+const breaker = new CircuitBreaker({
+  onCircuitOpen() {
+    console.log('CircuitBreaker is now open')
+  },
+  onCircuitClose() {
+    console.log('CircuitBreaker is now closed')
+  }
+})
 
 function valueableResource (isFail) {
   return isFail ? Promise.reject(new Error('Resource error')) : Promise.resolve('Foo')
