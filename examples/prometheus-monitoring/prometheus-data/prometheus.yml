@@ -3,7 +3,7 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['192.168.0.173:3001']
+      - targets: ['192.168.43.190:3001']
         labels:
           service: 'my-service'
           group: 'production'

@@ -25,13 +25,13 @@ Unix:
 ```sh
 docker run -p 9090:9090 -v $(pwd)/prometheus-data:/prometheus-data prom/prometheus -config.file=/prometheus-data/prometheus.yml
 ```
-Windows: 
+Windows:
 ```sh
 docker run -p 9090:9090 -v "$pwd/prometheus-data:/prometheus-data prom/prometheus" -config.file=/prometheus-data/prometheus.yml
 ```
 
-Host machine IP address: 
-UNIX: `ifconfig | grep 'inet 192'| awk '{ print $2}'`
+Host machine IP address:
+UNIX: `ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'`
 Windows: `docker-machine ip`
 Modify: `/prometheus-data/prometheus.yml`, replace `192.168.0.10` with your own host machine's IP.
 
