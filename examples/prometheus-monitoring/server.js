@@ -2,6 +2,7 @@
 
 const express = require('express')
 const Prometheus = require('prom-client')
+const _ = require('lodash')
 
 const app = express()
 const port = process.env.PORT || 3001
@@ -36,9 +37,10 @@ app.get('/metrics', (req, res) => {
 
 app.use((req, res, next) => {
   const responseTimeInMs = Date.now() - res.locals.startEpoch
+  const path = _.get(req, 'route.path') || req.path
 
-  httpRequestsTotal.inc({ route: req.route.path, code: res.statusCode })
-  httpRequestDurationMicroseconds.labels(req.route.path).observe(responseTimeInMs)
+  httpRequestsTotal.inc({ route: path, code: res.statusCode })
+  httpRequestDurationMicroseconds.labels(path).observe(responseTimeInMs)
 
   next()
 })

@@ -9,7 +9,9 @@ Distributed tracing with [Jaeger](http://jaeger.readthedocs.io) and [OpenTracing
 1. Run Jaeger: see below
 2. Visit your running Jaeger
 3. `npm start`
-4. open: http://localhost:3001/site
+  3.1. if you get `Error: Cannot find module '../common/bootstrap'`
+  3.2. run `rm -rf node_modules package-lock.json && npm i`
+4. open: http://localhost:3001/
 5. Visit your running Jaeger: http://localhost:16686
 6. Check out context and instrumentations: https://github.com/RisingStack/jaeger-node
 
