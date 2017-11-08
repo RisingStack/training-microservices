@@ -10,28 +10,32 @@ function getAll () {
 }
 
 function open (accountId, openingBalance) {
+  accounts[accountId] = openingBalance
+
   AccountEvent.append({
     type: AccountEvent.EVENT.open,
     id: accountId,
     balance: openingBalance,
     timestamp: Date.now()
   })
-
-  accounts[accountId] = openingBalance
 }
 
 function close (accountId) {
+  const balance = accounts[accountId]
+  delete accounts[accountId]
+
   AccountEvent.append({
     type: AccountEvent.EVENT.close,
     id: accountId,
-    balance: accounts[accountId],
+    balance,
     timestamp: Date.now()
   })
-
-  delete accounts[accountId]
 }
 
 function transferMoney (accountIdFrom, accountIdTo, amount) {
+  accounts[accountIdFrom] -= amount
+  accounts[accountIdTo] += amount
+
   AccountEvent.append({
     type: AccountEvent.EVENT.transfer,
     fromId: accountIdFrom,
@@ -39,9 +43,6 @@ function transferMoney (accountIdFrom, accountIdTo, amount) {
     amount,
     timestamp: Date.now()
   })
-
-  accounts[accountIdFrom] -= amount
-  accounts[accountIdTo] += amount
 }
 
 module.exports = {
