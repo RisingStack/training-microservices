@@ -1,0 +1,31 @@
+{
+  "name": "example-pact",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Pact example",
+  "scripts": {
+    "client": "node client",
+    "server": "node server",
+    "test-consumer": "NODE_ENV=test mocha client/client.spec.js",
+    "test-provider": "NODE_ENV=test node server/consumerTests/verifyPacts.js",
+    "test": "NODE_ENV=test npm-run-all test-consumer test-provider",
+    "start": "SITES_SERVICE_URL='http://localhost:3001' npm-run-all --parallel server client"
+  },
+  "author": "RisingStack, Inc.",
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "express": "4.16.2",
+    "lodash": "4.17.4",
+    "npm-run-all": "4.1.2",
+    "request": "2.83.0",
+    "request-promise-native": "1.0.5"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact-node": "5.2.1",
+    "chai": "4.1.2",
+    "mocha": "4.0.1",
+    "pact": "4.2.1",
+    "sinon": "4.1.2",
+    "sinon-chai": "2.14.0"
+  }
+}

@@ -1,2 +1,4 @@
 node_modules
 examples/event-sourcing/event_log.txt
+examples/pact/logs
+examples/pact/pacts
