@@ -18,10 +18,10 @@ function valueableResource (isFail) {
   return isFail ? Promise.reject(new Error('Resource error')) : Promise.resolve('Foo')
 }
 
-function protectedValueableResource (isFail) {
+function protectedValueableResource (shouldFail) {
   return new Promise((resolve, reject) => {
     breaker.run((success, failed) => {
-      valueableResource(isFail)
+      valueableResource(shouldFail)
         .then((result) => {
           success()
           resolve(result)
@@ -37,9 +37,9 @@ function protectedValueableResource (isFail) {
 }
 
 app.get('/', (req, res, next) => {
-  const isFail = !!req.query.fail
+  const shouldFail = !!req.query.fail
 
-  protectedValueableResource(isFail)
+  protectedValueableResource(shouldFail)
     .then((result) => {
       res.send({ result })
       next()
