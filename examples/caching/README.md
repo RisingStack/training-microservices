@@ -7,8 +7,8 @@ Caching example
 ## Steps
 
 1. `npm install` and `npm start`
-2. Call http://localhost:3001
-3. Call http://localhost:3001 again
+2. Call curl -w "@curl-format.txt" -o /dev/null -s "http://localhost:3001"
+3. Call again and compare timing
 
 ## Result
 
