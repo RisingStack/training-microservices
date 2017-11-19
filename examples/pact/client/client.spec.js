@@ -30,5 +30,5 @@ describe('site listing', () => {
     await client.getSites()
     expect(consoleSpy).to.have.been.calledWith('CLIENT: Current sites are: Foo')
     provider.verify()
-  })
+  }).timeout(5000) // need to raise timeout so the mock server has enough time to start
 })
